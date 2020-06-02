@@ -1,11 +1,10 @@
+// /src/App.js
 import React from 'react';
-
+import Index from './components/pomodoro/index'
 function App() {
   return (
-    <div>
-      <h1>pomodoro
-       
-      </h1>
+    <div >
+      <Index />
     </div>
   );
 }
