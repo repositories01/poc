@@ -1,10 +1,14 @@
 // /src/App.js
 import React from 'react';
-import Index from './components/pomodoro/index'
+import Session from './components/pomodoro/index'
+import Break from './components/pomodoro/Break'
 function App() {
   return (
     <div >
-      <Index />
+      
+      <Session /> <br />
+      <Break />
+      
     </div>
   );
 }

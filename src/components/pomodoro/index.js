@@ -4,7 +4,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.handleStart = this.handleStart.bind(this);
-        this.pause = this.pause.bind(this);
+        this.handlePause = this.handlePause.bind(this);
         this.timer = null;
         this.state = {
             second: 0,
@@ -14,8 +14,6 @@ class App extends Component {
     }
 
     handleStart() {
-        this.setState({ session: true });
-
         this.timer = setInterval(() => {
             const { second, minute } = this.state
             if (second > 0) {
@@ -40,9 +38,9 @@ class App extends Component {
 
     }
 
-    pause() {
+    handlePause() {
         clearInterval(this.timer)
-        this.setState({session: false})
+        this.setState({ session: false })
     }
     render() {
         const { minute, second } = this.state
@@ -51,14 +49,12 @@ class App extends Component {
             <div>
                 <h1>{minute < 10 ? `0${minute}` : minute}
                 :{second < 10 ? `0${second} ` : second}</h1>
+
                 {
                     this.state.session ?
-                        <button className="" onClick={this.pause}>pause</button>
+                        <button className="" onClick={this.handlePause}>pause</button>
                         :
                         <button className="" onClick={this.handleStart}>start</button>
-
-                        
-
                 }
 
 
