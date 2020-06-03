@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Session from './Session'
 class Break extends Component {
     constructor(props) {
         super(props);
@@ -8,8 +8,9 @@ class Break extends Component {
         this.timer = null;
         this.state = {
             second: 0,
-            minute: 5,
-            session: false
+            minute: 2,
+            session: false,
+            work: false
         }
     }
 
@@ -24,6 +25,7 @@ class Break extends Component {
             if (second === 0) {
                 if (minute === 0) {
                     clearInterval(this.timer)
+                    this.setState({ work: true });
                 } else {
                     this.setState(({ minute }) => ({
                         minute: minute - 1,
@@ -31,7 +33,7 @@ class Break extends Component {
                     }))
                 }
             }
-        }, 1000)
+        }, 100)
         if (this.timer != null) {
             return this.setState({ session: true });
         }
@@ -43,8 +45,14 @@ class Break extends Component {
         this.setState({ session: false })
     }
     render() {
-        const { minute, second } = this.state
-
+        const { minute, second} = this.state
+console.log(this.state.break)
+        if (this.state.work ) {
+            return (
+                <Session />
+            )
+        } else {
+            
         return (
             <div>
                 <h1>{minute < 10 ? `0${minute}` : minute}
@@ -56,11 +64,10 @@ class Break extends Component {
                         :
                         <button className="" onClick={this.handleStart}>start</button>
                 }
-
-
-
-            </div>
+                </div>
         );
+        }
+
     }
 
 }
