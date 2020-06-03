@@ -4,17 +4,19 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.handleStart = this.handleStart.bind(this);
+        this.pause = this.pause.bind(this);
+        this.timer = null;
         this.state = {
             second: 0,
             minute: 25,
-            timer: false
+            session: false
         }
     }
 
-
     handleStart() {
-        console.log(this.state.timer)
-        this.Interval = setInterval(() => {
+        this.setState({ session: true });
+
+        this.timer = setInterval(() => {
             const { second, minute } = this.state
             if (second > 0) {
                 this.setState(({ second }) => ({
@@ -23,7 +25,7 @@ class App extends Component {
             }
             if (second === 0) {
                 if (minute === 0) {
-                    clearInterval(this.myInterval)
+                    clearInterval(this.timer)
                 } else {
                     this.setState(({ minute }) => ({
                         minute: minute - 1,
@@ -31,21 +33,36 @@ class App extends Component {
                     }))
                 }
             }
-
         }, 1000)
-        //    if ((this.state.second && this.state.minute) == 0) {
-        //        this.setState({timer: false})
-        //    } else {
-        //        this.setState({timer:true})
-        //    }
+        if (this.timer != null) {
+            return this.setState({ session: true });
+        }
+
+    }
+
+    pause() {
+        clearInterval(this.timer)
+        this.setState({session: false})
     }
     render() {
         const { minute, second } = this.state
 
         return (
             <div>
-                <h1>{minute < 10 ? `0${minute}` : minute}:{second < 10 ? `0${second} ` : second}</h1>
-                <button className="" onClick={this.handleStart}>start</button>
+                <h1>{minute < 10 ? `0${minute}` : minute}
+                :{second < 10 ? `0${second} ` : second}</h1>
+                {
+                    this.state.session ?
+                        <button className="" onClick={this.pause}>pause</button>
+                        :
+                        <button className="" onClick={this.handleStart}>start</button>
+
+                        
+
+                }
+
+
+
             </div>
         );
     }
