@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Break(props) {
+export default function breakteste(props) {
     return (
         <div>
             <h1>{props.minuteBreak < 10 ? `0${props.minuteBreak}` : props.minuteBreak}

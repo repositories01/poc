@@ -2,11 +2,12 @@
 import React from 'react';
 import Session from './components/pomodoro/Session'
 import Break from './components/pomodoro/Break'
+import PomoMain from './components/pomodoro/PomoMain';
 function App() {
   return (
     <div >
 
-      <Session /> 
+      <PomoMain /> 
       
     </div>
   );

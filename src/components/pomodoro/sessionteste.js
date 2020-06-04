@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Session(props) {
+export default function sessionteste(props) {
     return (
         <div>
             <h1>{props.minuteSession < 10 ? `0${props.minuteSession}` : props.minuteSession}
