@@ -1,13 +1,13 @@
 // /src/App.js
 import React from 'react';
-import Session from './components/pomodoro/Session'
-import Break from './components/pomodoro/Break'
-import PomoMain from './components/pomodoro/PomoMain';
+import IndexPomo from './components/pomodoro/IndexPomo';
+import IndexList from './components/tasklist/IndexList'
 function App() {
   return (
     <div >
 
-      <PomoMain /> 
+      <IndexPomo /> 
+      <IndexList />
       
     </div>
   );

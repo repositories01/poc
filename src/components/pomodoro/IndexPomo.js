@@ -67,9 +67,9 @@ class PomoMain extends Component {
                     this.setState({
                         break: true,
                         work:false,
-                        running: false,
-                        
+                        running: false,                        
                     });
+                    console.log(this.array)
                 } else {
                     this.setState(({ minuteSession }) => ({
                         minuteSession: minuteSession - 1,
@@ -95,39 +95,43 @@ class PomoMain extends Component {
         this.setState({ running: false })
     }
 
+   
 
     render() {
         const { minuteBreak, secondBreak } = this.state;
         const { minuteSession, secondSession } = this.state;
         const { running } = this.state;
 
+        while (this.array.length < 4) {
+           
        
-        if (this.state.work) {
-            return (
-                <Session
-                    minuteSession={minuteSession}
-                    secondSession={secondSession}
-                    handlePause={this.handlePause}
-                    handleStartSession={this.handleStartSession}
-                    running={running}
-                />
-            )
-        } else {
+            if (this.state.work) {
+                return (
+                    <Session
+                        minuteSession={minuteSession}
+                        secondSession={secondSession}
+                        handlePause={this.handlePause}
+                        handleStartSession={this.handleStartSession}
+                        running={running}
+                    />
+                )
+            } else {
 
-            return (
+                return (
 
-                <Break
-                    minuteBreak={minuteBreak}
-                    secondBreak={secondBreak}
-                    handlePause={this.handlePause}
-                    handleStartBreak={this.handleStartBreak}
-                    running={running}
-                />
-
-
-            );
+                    <Break
+                        minuteBreak={minuteBreak}
+                        secondBreak={secondBreak}
+                        handlePause={this.handlePause}
+                        handleStartBreak={this.handleStartBreak}
+                        running={running}
+                    />
 
 
+                );
+
+
+            }
         }
     }
 }
