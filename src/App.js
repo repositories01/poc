@@ -6,7 +6,8 @@ import Work from './view/work';
 function App() {
   return (
     <div>
-      <Work />ss
+      <Work />
+      
     </div>
   );
 }
