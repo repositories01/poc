@@ -1,13 +1,12 @@
 import React from 'react';
 import IndexPomo from './components/pomodoro/IndexPomo';
+import Work from './view/work';
 
 
 function App() {
   return (
-    <div >
-
-      <IndexPomo /> 
-      
+    <div>
+      <Work />ss
     </div>
   );
 }
