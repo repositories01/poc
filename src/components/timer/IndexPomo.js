@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, {
+    Component
+} from 'react';
 import Break from './Break'
 import Session from './Session';
 class PomoMain extends Component {
@@ -22,9 +24,14 @@ class PomoMain extends Component {
 
     handleStartBreak() {
         this.timer = setInterval(() => {
-            const { secondBreak, minuteBreak } = this.state
+            const {
+                secondBreak,
+                minuteBreak
+            } = this.state
             if (secondBreak > 0) {
-                this.setState(({ secondBreak }) => ({
+                this.setState(({
+                    secondBreak
+                }) => ({
                     secondBreak: secondBreak - 1
                 }))
             }
@@ -38,7 +45,9 @@ class PomoMain extends Component {
                     });
 
                 } else {
-                    this.setState(({ minuteBreak }) => ({
+                    this.setState(({
+                        minuteBreak
+                    }) => ({
                         minuteBreak: minuteBreak - 1,
                         secondBreak: 59
                     }))
@@ -46,7 +55,9 @@ class PomoMain extends Component {
             }
         }, 100)
         if (this.timer != null) {
-            return this.setState({ running: true });
+            return this.setState({
+                running: true
+            });
         }
 
     }
@@ -54,9 +65,14 @@ class PomoMain extends Component {
 
     handleStartSession() {
         this.timer = setInterval(() => {
-            const { secondSession, minuteSession } = this.state
+            const {
+                secondSession,
+                minuteSession
+            } = this.state
             if (secondSession > 0) {
-                this.setState(({ secondSession }) => ({
+                this.setState(({
+                    secondSession
+                }) => ({
                     secondSession: secondSession - 1
                 }))
             }
@@ -66,24 +82,28 @@ class PomoMain extends Component {
                     this.array.push(1)
                     this.setState({
                         break: true,
-                        work:false,
-                        running: false,                        
+                        work: false,
+                        running: false,
                     });
                     console.log(this.array)
                 } else {
-                    this.setState(({ minuteSession }) => ({
+                    this.setState(({
+                        minuteSession
+                    }) => ({
                         minuteSession: minuteSession - 1,
                         secondSession: 59
                     }))
                 }
             }
         }, 100)
-     
+
         if (this.timer != null) {
-            return this.setState({ running: true });
+            return this.setState({
+                running: true
+            });
         }
-        
-      
+
+
 
     }
 
@@ -92,39 +112,68 @@ class PomoMain extends Component {
 
     handlePause() {
         clearInterval(this.timer)
-        this.setState({ running: false })
+        this.setState({
+            running: false
+        })
     }
 
-   
+
 
     render() {
-        const { minuteBreak, secondBreak } = this.state;
-        const { minuteSession, secondSession } = this.state;
-        const { running } = this.state;
+        const {
+            minuteBreak,
+            secondBreak
+        } = this.state;
+        const {
+            minuteSession,
+            secondSession
+        } = this.state;
+        const {
+            running
+        } = this.state;
 
         while (this.array.length < 4) {
-           
-       
+
+
             if (this.state.work) {
-                return (
-                    <Session
-                        minuteSession={minuteSession}
-                        secondSession={secondSession}
-                        handlePause={this.handlePause}
-                        handleStartSession={this.handleStartSession}
-                        running={running}
+                return ( <
+                    Session minuteSession = {
+                        minuteSession
+                    }
+                    secondSession = {
+                        secondSession
+                    }
+                    handlePause = {
+                        this.handlePause
+                    }
+                    handleStartSession = {
+                        this.handleStartSession
+                    }
+                    running = {
+                        running
+                    }
                     />
                 )
             } else {
 
                 return (
 
-                    <Break
-                        minuteBreak={minuteBreak}
-                        secondBreak={secondBreak}
-                        handlePause={this.handlePause}
-                        handleStartBreak={this.handleStartBreak}
-                        running={running}
+                    <
+                    Break minuteBreak = {
+                        minuteBreak
+                    }
+                    secondBreak = {
+                        secondBreak
+                    }
+                    handlePause = {
+                        this.handlePause
+                    }
+                    handleStartBreak = {
+                        this.handleStartBreak
+                    }
+                    running = {
+                        running
+                    }
                     />
 
 
